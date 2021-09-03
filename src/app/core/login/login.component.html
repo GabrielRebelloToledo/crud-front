@@ -1,0 +1,19 @@
+<form #form="ngForm" [formGroup]="loginForm" (submit)="login()" class="form-signin">
+    <h1>Acesso ao sistema</h1>
+    <div class="form-group">
+        <input formControlName="login" type="text" placeholder="Usuário" class="form-control">
+        <app-msg-erro mensagem="O usuário é obrigatório!" *ngIf="loginForm.get('login').errors?.required && 
+            (form.submitted || loginForm.get('login').touched)">
+        </app-msg-erro>
+    </div>
+    <div class="form-group">
+        <input formControlName="password" type="password" placeholder="Senha" class="form-control">
+        <app-msg-erro mensagem="A senha é obrigatória!" *ngIf="loginForm.get('password').errors?.required && 
+            (form.submitted || loginForm.get('password').touched)">
+        </app-msg-erro>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Entrar</button>
+
+    <app-msg-erro mensagem="Usuário ou senha inválidos!" *ngIf="loginError"></app-msg-erro>
+</form>

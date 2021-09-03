@@ -1,0 +1,17 @@
+<div class="form-row">
+    <div class="form-group col-md-4" *ngIf="search">
+        <label for="search">{{ search }}</label>
+        <input type="text" class="form-control" [placeholder]="searchPlaceholder">
+    </div>
+    <div class="form-group col-auto" *ngIf="period">
+        <label for="periodInit">Data Inicial:</label>
+        <input type="date" class="form-control" name="periodInit" [(ngModel)]="periodo.periodIni">
+    </div>
+    <div class="form-group col-auto" *ngIf="period">
+        <label for="periodEnd">Data Final:</label>
+        <input type="date" class="form-control" name="periodEnd" [(ngModel)]="periodo.periodFim">
+    </div>
+    <div class="form-group col-auto mt-2">
+        <button type="submit" class="btn btn-primary mt-4" (click)="btnSearch.emit(periodo)">Pesquisar</button>
+    </div>
+</div>

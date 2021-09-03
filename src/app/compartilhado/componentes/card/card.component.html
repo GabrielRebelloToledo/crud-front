@@ -1,0 +1,11 @@
+<div class="card border-light mb-3">
+	<div class="card-body">
+		<div class="text-center mb-3" *ngIf="url">
+			<img [src]="url" [alt]="description" class="img-fluid">
+		</div>
+		<h4 class="card-title">{{ titleCard }}</h4>
+		<div class="card-text">
+			<ng-content></ng-content>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <form [formGroup]="alunoForm" (submit)="submit()">
+
+        <div class="row mb-5">
+            <div class="col-lg-4 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Nome</span>
+                </div>
+                <input type="text" class="form-control" formControlName="nome" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+
+            <div class="col-lg-4 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Curso</span>
+                </div>
+                <input type="text" class="form-control" formControlName="curso" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+
+        </div>
+
+        <div class="form-group buttons text-center">
+            <button class="btn btn-success" type="submit">Enviar</button>
+            <button class="btn btn-primary ml-2" [routerLink]="'/home'">Voltar</button>
+        </div>
+
+
+    </form>
+</div>

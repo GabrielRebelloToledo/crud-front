@@ -1,0 +1,24 @@
+<form [formGroup]="alunoForm">
+    
+    <div class="container text-center">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let aluno of ListaAlunos">
+                    <td>{{aluno.nome}}</td>
+                    <td>{{aluno.curso}}</td>
+                    <td>
+                        <button class="btn btn-outline-primary ml-2" (click)="editarAluno(aluno.id)">Editar</button>
+                        <button class="btn btn-outline-danger ml-2" (click)="deletarAluno(aluno.id)">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

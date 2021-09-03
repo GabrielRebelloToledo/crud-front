@@ -1,0 +1,19 @@
+<div class="modal fade" [id]="idModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{ titleModal }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <ng-content></ng-content>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" *ngIf="titleBtn1" (click)="btn1.emit()" data-dismiss="modal">{{titleBtn1}}</button>
+                <button type="button" class="btn btn-danger" *ngIf="titleBtn2" (click)="btn2.emit()" data-dismiss="modal">{{titleBtn2}}</button>
+            </div>
+        </div>
+    </div>
+</div>
