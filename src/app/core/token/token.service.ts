@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-// informe a key que será salva no localhost
-const KEY = 'authTokenPlanoTerapeutico';
+// informe a key que será salvo no localhost
+const KEY = 'authTokenmodeloapp';
 
 @Injectable({providedIn: 'root'})
 export class TokenService{
