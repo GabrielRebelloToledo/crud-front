@@ -16,7 +16,9 @@ import { UserService } from 'src/app/core/user/user.service';
 export class CadastroAlunoComponent implements OnInit {
 
   alunoForm: FormGroup;
-  
+  images;
+  formData;
+
   constructor(
     private location: Location,
     private formBuilder: FormBuilder,
@@ -40,8 +42,19 @@ export class CadastroAlunoComponent implements OnInit {
       id: [null],
       id_user: ['', Validators.required],
       nome: ['', Validators.required],
-      curso: ['', Validators.required]
+      curso: ['', Validators.required],
+      image: ['', Validators.required],
     });
+  }
+
+  selectImage(event){
+    if(event.target.files.length >0){
+      const file = event.target.files[0];
+      this.images = file;
+      this.formData = new FormData();
+      this.formData.append('file', this.images);
+      console.log(this.formData)
+    }
   }
 
   editarForm(aluno: Aluno) {
@@ -50,7 +63,8 @@ export class CadastroAlunoComponent implements OnInit {
       {
         id: aluno[0].id,
         nome: aluno[0].nome,
-        curso: aluno[0].curso
+        curso: aluno[0].curso,
+        image: aluno[0].image
       }
     )
   }
@@ -59,14 +73,26 @@ export class CadastroAlunoComponent implements OnInit {
     this.alunoForm.patchValue(
       {
         nome: aluno.nome,
-        curso: aluno.curso
+        curso: aluno.curso,
+        image: aluno.image
       });
 
+  }
+
+  onSubmit(){
+    const formData = new FormData();
+    formData.append('file', this.images);
+    this.AlunoService.image(this.formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+    console.log(formData);
   }
 
   submit() {
     if (this.alunoForm.value.id) {
       const atualizarAluno = this.alunoForm.getRawValue() as Aluno;
+      
       this.AlunoService.update(atualizarAluno).subscribe(
         success => {
           alert('Aluno atualizado!')

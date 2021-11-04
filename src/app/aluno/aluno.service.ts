@@ -4,6 +4,7 @@ import { EMPTY, Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Aluno } from './aluno';
+import { CadastroAlunoComponent } from './cadastro-aluno/cadastro-aluno.component';
 
 const API = environment.apiUrl;
 
@@ -25,6 +26,10 @@ export class AlunoService {
     return this.http.post(`${API}aluno`, aluno).pipe(take(1));
   }
 
+  image(aluno: Aluno){
+    return this.http.post(`http://localhost:3000/file`, aluno).pipe(take(1));
+  }
+  
   getById(id) {
     if (!id) return EMPTY;
     return this.http.get<Aluno>(`${API}aluno/${id}`);

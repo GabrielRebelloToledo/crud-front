@@ -6,22 +6,29 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Nome</span>
                 </div>
-                <input type="text" class="form-control" formControlName="nome" aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default">
+                <input type="text" class="form-control" formControlName="nome" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
 
             <div class="col-lg-4 input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text">Curso</span>
                 </div>
-                <input type="text" class="form-control" formControlName="curso" aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default">
+                <input type="text" class="form-control" formControlName="curso" aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
+
+            <div class="col-lg-4 input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Imagem</span>
+                </div>
+                <input type="file" (change)="selectImage($event)" formControlName="image" />
+                <button class="btn btn-success" type="button" (click)=" onSubmit()">Enviar Imagem</button>
+            </div>
+            <br>
 
         </div>
 
         <div class="form-group buttons text-center">
-            <button class="btn btn-success" type="submit">Enviar</button>
+            <button class="btn btn-success" type="submit" (click)=" onSubmit()">Enviar</button>
             <button class="btn btn-primary ml-2" [routerLink]="'/home'">Voltar</button>
         </div>
 
